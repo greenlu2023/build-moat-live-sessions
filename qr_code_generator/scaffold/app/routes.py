@@ -1,6 +1,6 @@
 import io
 from datetime import datetime
-
+import os
 import qrcode
 from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.responses import RedirectResponse, StreamingResponse
@@ -12,13 +12,16 @@ from .models import ScanEvent, UrlMapping
 from .schemas import CreateRequest, CreateResponse, QRInfoResponse, UpdateRequest
 from .token_gen import generate_token
 from .url_validator import validate_url
+from dotenv import load_dotenv
 
 router = APIRouter()
+load_dotenv()
 
 # In-memory cache (simulates Redis for prototype)
 redirect_cache: dict[str, str] = {}
 
-BASE_URL = "http://localhost:8000"
+
+BASE_URL = os.environ.get("BASE_URL", "http://localhost:8000")
 
 
 @router.post("/api/qr/create", response_model=CreateResponse)
