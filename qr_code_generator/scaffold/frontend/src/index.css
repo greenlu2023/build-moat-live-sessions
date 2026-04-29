@@ -1,0 +1,229 @@
+:root {
+  --bg-base: #0d1117;
+  --bg-panel: #161b22;
+  --border-subtle: #30363d;
+  --accent-primary: #39d353;
+  --accent-secondary: #58a6ff;
+  --accent-danger: #f85149;
+  --accent-warning: #d29922;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-body: system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  width: 100%;
+  max-width: 900px;
+  padding: 1rem;
+}
+
+/* Typography */
+.mono {
+  font-family: var(--font-mono);
+}
+
+.label {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+a {
+  color: var(--accent-secondary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Layout Elements */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.panel {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Form Elements */
+input {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  flex: 1;
+  outline: none;
+}
+input:focus {
+  border-color: var(--accent-secondary);
+}
+
+button {
+  background-color: transparent;
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-body);
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+button:hover {
+  background-color: rgba(57, 211, 83, 0.1);
+}
+
+button.btn-danger {
+  color: var(--accent-danger);
+  border-color: var(--accent-danger);
+}
+button.btn-danger:hover {
+  background-color: rgba(248, 81, 73, 0.1);
+}
+
+button.btn-secondary {
+  color: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+}
+button.btn-secondary:hover {
+  background-color: rgba(88, 166, 255, 0.1);
+}
+
+button:disabled {
+  color: var(--text-secondary);
+  border-color: var(--border-subtle);
+  cursor: not-allowed;
+}
+
+/* Specific UI Elements */
+.qr-island {
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+}
+
+.qr-island img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-subtle);
+  font-size: 14px;
+  font-weight: bold;
+}
+.status-badge::before {
+  content: "●";
+}
+
+.status-active {
+  color: var(--accent-primary);
+}
+.status-expired {
+  color: var(--accent-warning);
+}
+.status-deleted {
+  color: var(--accent-danger);
+}
+
+.metadata-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.5rem;
+}
+
+.metadata-item {
+  display: flex;
+  flex-direction: column;
+}
+.metadata-val {
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.countdown-red {
+  color: var(--accent-danger);
+}
+
+.table-container {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 0.5rem;
+}
+.table-container th, .table-container td {
+  border: 1px solid var(--border-subtle);
+  padding: 0.25rem 0.5rem;
+  text-align: left;
+}
+.table-container th {
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
